@@ -4,13 +4,13 @@
 
 kubectl:
   image:
-    repository: dtr.dev.cray.com/loftsman/loftsman
-    tag: 0.5.1
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.19.9
 
 vault-operator:
   image:
     bankVaultsRepository: banzaicloud/bank-vaults
-    repository: banzaicloud/vault-operator
+    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator
     tag: 1.8.0
 
   watchNamespace: "vault"

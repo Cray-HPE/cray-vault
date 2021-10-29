@@ -7,8 +7,8 @@ nameOverride: ""
 # Needed for install/maintenance jobs
 kubectl:
   image:
-    repository: dtr.dev.cray.com/loftsman/loftsman
-    tag: 0.5.1
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.19.9
 
 serviceAccountName: "vault"
 
@@ -20,10 +20,10 @@ allowedAuthNamespaces:
 vault:
   ui: false
   size: 3
-  image: "docker.io/library/vault:1.5.5"
-  bankVaultsImage: "docker.io/banzaicloud/bank-vaults:1.8.0"
-  statsdImage: "docker.io/prom/statsd-exporter:v0.18.0"
-  veleroFsfreezeImage: "dtr.dev.cray.com/baseos/ubuntu:bionic"
+  image: "artifactory.algol60.net/csm-docker/stable/docker.io/library/vault:1.5.5"
+  bankVaultsImage: "artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults:1.8.0"
+  statsdImage: "artifactory.algol60.net/csm-docker/stable/docker.io/prom/statsd-exporter:v0.18.0"
+  veleroFsfreezeImage: "artifactory.algol60.net/csm-docker/stable/docker.io/library/ubuntu:focal"
   antiaffinity:
     enabled: true
     topologyKey: "kubernetes.io/hostname"

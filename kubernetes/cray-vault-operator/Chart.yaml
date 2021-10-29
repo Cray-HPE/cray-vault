@@ -1,7 +1,27 @@
----
-apiVersion: v1
-appVersion: 1.8.0
+apiVersion: v2
 name: cray-vault-operator
-description: Cray Vault Operator for secure secret stores
-home: "cloud/cray-charts"
 version: 1.0.1
+description: Cray Vault Operator for secure secret stores
+keywords:
+  - cray-vault-operator
+home: "cloud/cray-charts"
+dependencies:
+  - name: vault-operator
+    version: 1.8.0
+    repository: "@banzaicloud-stable"
+appVersion: 1.8.0
+annotations:
+  artifacthub.io/changes: |
+    - kind: security
+      description: Updated images to CSM patched versions
+      links:
+        - name: Github Issue
+          url: https://github.com/Cray-HPE/cray-vault/issues/3
+        - name: Github PR
+          url: https://github.com/Cray-HPE/cray-vault/pull/2
+  artifacthub.io/images: |
+    - name: kubectl
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.9
+    - name: vault-operator
+      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator:1.8.0
+  artifacthub.io/license: MIT
