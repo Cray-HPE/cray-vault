@@ -14,27 +14,25 @@ pipeline {
         NAME = "cray-vault"
         DESCRIPTION = "Deploys and configures Vault for the Cray system."
         IS_STABLE = getBuildIsStable()
-        CHART_NAME_1 = "cray-vault"
-        CHART_NAME_2 = "cray-vault-operator"
-        CHART_VERSION_1 = getChartVersion(name: env.CHART_NAME_1, isStable: env.IS_STABLE)
-        CHART_VERSION_2 = getChartVersion(name: env.CHART_NAME_2, isStable: env.IS_STABLE)
     }
 
     stages {
         stage("Build") {
-            parallel {
-                stage("Charts") {
-                    steps {
-                        sh "make charts"
-                    }
-                }
+            environment {
+                CHART_VERSIONS = [
+                    getChartVersion(name: "cray-vault-operator", chartDirectory: "charts", isStable: env.IS_STABLE),
+                    getChartVersion(name: "cray-vault",          chartDirectory: "charts", isStable: env.IS_STABLE)
+                ].join(" ")
+            }
+            steps {
+                sh "make"
             }
         }
 
         stage("Publish") {
             steps {
                 script {
-                    publishCsmHelmCharts(component: env.NAME, chartsPath: "${WORKSPACE}/kubernetes/.packaged", isStable: env.IS_STABLE)
+                    publishCsmHelmCharts(component: env.NAME, chartsPath: "${WORKSPACE}/packages", isStable: env.IS_STABLE)
                 }
             }
         }

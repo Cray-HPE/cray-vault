@@ -1,0 +1,28 @@
+# Default values for cray-vault-operator.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+kubectl:
+  image:
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.19.15
+    pullPolicy: IfNotPresent
+
+vault-operator:
+  image:
+    bankVaultsRepository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults
+    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator
+    tag: 1.8.0
+
+  watchNamespace: "vault"
+
+  etcd-operator:
+    enabled: false  # Always needs to be false!
+
+  resources:
+    limits:
+      cpu: "2"
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
