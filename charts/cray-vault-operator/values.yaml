@@ -5,18 +5,19 @@
 kubectl:
   image:
     repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
-    tag: 1.19.9
+    tag: 1.19.15
+    pullPolicy: IfNotPresent
 
 vault-operator:
   image:
-    bankVaultsRepository: banzaicloud/bank-vaults
+    bankVaultsRepository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults
     repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator
     tag: 1.8.0
 
   watchNamespace: "vault"
 
-  etcd-operator: # This always needs to be false
-    enabled: false
+  etcd-operator:
+    enabled: false  # Always needs to be false!
 
   resources:
     limits:
