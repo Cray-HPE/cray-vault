@@ -11,8 +11,8 @@ pipeline {
     }
 
     environment {
-        NAME = "cray-etcd"
-        DESCRIPTION = "Deploys the etcd operator and other utilities to the Cray system."
+        NAME = "cray-vault"
+        DESCRIPTION = "Deploys and configures Vault for the Cray system."
         IS_STABLE = getBuildIsStable()
     }
 
@@ -20,8 +20,8 @@ pipeline {
         stage("Build") {
             environment {
                 CHART_VERSIONS = [
-                    getChartVersion(name: "cray-vault-operator",   chartDirectory: "charts", isStable: env.IS_STABLE),
-                    getChartVersion(name: "cray-vault",   chartDirectory: "charts", isStable: env.IS_STABLE),
+                    getChartVersion(name: "cray-vault-operator", chartDirectory: "charts", isStable: env.IS_STABLE),
+                    getChartVersion(name: "cray-vault",          chartDirectory: "charts", isStable: env.IS_STABLE),
                 ].join(" ")
             }
             steps {
