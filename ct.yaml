@@ -1,0 +1,2 @@
+chart-repos:
+  - banzaicloud=https://kubernetes-charts.banzaicloud.com
