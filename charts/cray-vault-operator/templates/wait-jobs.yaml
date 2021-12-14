@@ -27,4 +27,4 @@ spec:
             - '/bin/sh'
           args:
             - '-c'
-            - '/usr/local/bin/wait-for-pods cray-vault-operator'
+            - 'kubectl rollout status deployment -n vault cray-vault-operator --timeout=15m'

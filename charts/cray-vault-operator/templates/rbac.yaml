@@ -23,8 +23,8 @@ kind: ClusterRole
 metadata:
   name: cray-vault-operator-jobs-cluster-role
 rules:
-- apiGroups: [""]
-  resources: ["pods"]
+- apiGroups: ["", "apps"]
+  resources: ["pods", "deployments"]
   verbs: ["get", "list"]
 ---
 kind: ClusterRoleBinding
