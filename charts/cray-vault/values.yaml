@@ -17,6 +17,9 @@ allowedAuthNamespaces:
   - namespace: services
     serviceaccount: "*"
     ttl: 72h
+  - namespace: uas
+    serviceaccount: "*"
+    ttl: 72h
 
 vault:
   ui: false
