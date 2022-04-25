@@ -16,7 +16,7 @@ spec:
     backup.velero.io/backup-volumes: vault-raft
   veleroEnabled: true
   veleroFsfreezeImage: "{{ .Values.vault.veleroFsfreezeImage }}"
-  
+
   {{- if .Values.vault.antiaffinity.enabled }}
   podAntiAffinity: {{ .Values.vault.antiaffinity.topologyKey }}
   {{- end }}
@@ -156,11 +156,9 @@ spec:
             bound_service_account_names:
               - cert-manager-issuer-common
             bound_service_account_namespaces:
-              - ceph-rgw
-              - services
-              - istio-system
-              - sma
-              - spire
+              {{- range .Values.certManager.namespaces }}
+              - {{ . }}
+              {{- end }}
             policies:
               - pki-common
             ttl: 1h

@@ -90,3 +90,10 @@ ssh:
       - name: compute
         allowedAuthNamespaces:
           - services
+certManager:
+  namespaces:
+    - ceph-rgw
+    - services
+    - istio-system
+    - sma
+    - spire
