@@ -16,7 +16,7 @@ spec:
     backup.velero.io/backup-volumes: vault-raft
   veleroEnabled: true
   veleroFsfreezeImage: "{{ .Values.vault.veleroFsfreezeImage }}"
-  
+
   {{- if .Values.vault.antiaffinity.enabled }}
   podAntiAffinity: {{ .Values.vault.antiaffinity.topologyKey }}
   {{- end }}
@@ -148,6 +148,9 @@ spec:
       {{- end }}
     auth:
       - type: kubernetes
+        config:
+          # This is required for Kubernetes 1.21+
+          issuer: "https://kubernetes.default.svc.cluster.local"
         roles:
           {{- if .Values.pki.customCA.enabled }}
           # authN role used by cert-manager for 'common', namespace-bound issuers
