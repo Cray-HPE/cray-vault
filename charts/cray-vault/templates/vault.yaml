@@ -150,7 +150,7 @@ spec:
       - type: kubernetes
         config:
           # This is required for Kubernetes 1.21+
-          issuer: "https://kubernetes.default.svc.cluster.local"
+          disable_iss_validation: true
         roles:
           {{- if .Values.pki.customCA.enabled }}
           # authN role used by cert-manager for 'common', namespace-bound issuers
