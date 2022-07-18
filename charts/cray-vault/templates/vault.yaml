@@ -163,6 +163,7 @@ spec:
               - services
               - istio-system
               - sma
+              - tapms-operator
               - spire
             policies:
               - pki-common
