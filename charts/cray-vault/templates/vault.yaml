@@ -189,6 +189,7 @@ spec:
               - tapms-operator
               - slurm-operator
               - spire
+              - operators
             policies:
               - pki-common
             ttl: 1h
