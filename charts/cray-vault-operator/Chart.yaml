@@ -1,17 +1,17 @@
 apiVersion: v2
 name: cray-vault-operator
-version: 1.1.1
+version: 1.2.0
 description: Cray Vault Operator for secure secret stores
 keywords:
   - cray-vault-operator
 home: "cloud/cray-charts"
 dependencies:
   - name: vault-operator
-    version: 1.8.0
+    version: 1.16.2
     repository: https://kubernetes-charts.banzaicloud.com
 maintainers:
   - name: kburns-hpe
-appVersion: 1.8.0  # Tracks the upstream version of vault-operator
+appVersion: 1.16.0  # Tracks the upstream version of vault-operator
 annotations:
   artifacthub.io/changes: |
     - kind: security
@@ -25,7 +25,7 @@ annotations:
     - name: kubectl
       image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
     - name: vault-operator
-      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator:1.8.0
+      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator:1.16.0
     - name: bank-vaults
-      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults:1.8.0
+      image: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults:1.16.0
   artifacthub.io/license: MIT

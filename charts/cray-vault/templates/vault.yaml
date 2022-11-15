@@ -72,7 +72,6 @@ spec:
         resources:
           requests:
             storage: {{ .Values.raft.pvc.storage }}
-        persistentVolumeReclaimPolicy: Retain
     {{- if .Values.audit.enabled }}
     - metadata:
         name: vault-audit
@@ -81,7 +80,6 @@ spec:
         # storageClassName: ""
         accessModes:
         - {{ .Values.audit.pvc.accessMode }}
-        persistentVolumeReclaimPolicy: Retain
         resources:
           requests:
             storage: {{ .Values.audit.pvc.storage }}
