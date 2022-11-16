@@ -50,8 +50,8 @@ allowedAuthNamespaces:
 vault:
   ui: false
   size: 3
-  image: "artifactory.algol60.net/csm-docker/stable/docker.io/library/vault:1.5.5"
-  bankVaultsImage: "artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults:1.8.0"
+  image: "artifactory.algol60.net/csm-docker/stable/docker.io/library/vault:1.12.1"
+  bankVaultsImage: "artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults:1.16.0"
   statsdImage: "artifactory.algol60.net/csm-docker/stable/docker.io/prom/statsd-exporter:v0.18.0"
   veleroFsfreezeImage: "artifactory.algol60.net/csm-docker/stable/docker.io/library/ubuntu:focal"
   antiaffinity:
