@@ -7,11 +7,11 @@ keywords:
 home: "cloud/cray-charts"
 dependencies:
   - name: vault-operator
-    version: 1.16.2
+    version: 1.16.1
     repository: https://kubernetes-charts.banzaicloud.com
 maintainers:
   - name: kburns-hpe
-appVersion: 1.16.0  # Tracks the upstream version of vault-operator
+appVersion: 1.16.0 # Tracks the upstream version of vault-operator
 annotations:
   artifacthub.io/changes: |
     - kind: security
