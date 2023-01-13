@@ -156,6 +156,11 @@ spec:
       # path == pki-mount/action
       - name: spire-intermediate
         rules: path "pki_common/root/sign-intermediate" { capabilities = ["update"] }
+      # This pki-engine policy is used by tpm-intermediate to request an intermediate CA
+      # certificate for tpm provisioner
+      # path == pki-mount/action
+      - name: tpm-intermediate
+        rules: path "pki_common/root/sign-intermediate" { capabilities = ["update"] }
       {{- end }}
       # This ssh-engine policy is used by services requesting SSH pub key signatures
       # for SSH certs, from vault
@@ -209,6 +214,16 @@ spec:
               - vault
             policies:
               - spire-intermediate
+            ttl: 1h
+          # authN role for direct vault API intermediate CA signing requests
+          # for the tpm-intermediate container
+          - name: tpm-intermediate
+            bound_service_account_names:
+              - "tpm-intermediate"
+            bound_service_account_namespaces:
+              - vault
+            policies:
+              - tpm-intermediate
             ttl: 1h
           {{- end }}
           {{- if .Values.ssh.certs.enabled }}
