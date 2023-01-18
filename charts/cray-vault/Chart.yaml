@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: cray-vault
-version: 1.4.1
+version: 1.5.0
 description: Cray Vault for secure secret stores
 keywords:
   - cray-vault
