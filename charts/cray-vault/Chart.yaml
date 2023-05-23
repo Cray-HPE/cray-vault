@@ -23,13 +23,14 @@
 #
 apiVersion: v2
 name: cray-vault
-version: 1.5.0
+version: 1.6.0
 description: Cray Vault for secure secret stores
 keywords:
   - cray-vault
 home: https://github.com/Cray-HPE/cray-vault
 maintainers:
   - name: kburns-hpe
+  - name: rnoska-hpe
 appVersion: 1.10.8
 annotations:
   artifacthub.io/changes: |

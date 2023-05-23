@@ -138,6 +138,15 @@ spec:
         rules: path "transit/*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+      # This policy is used by the Tenant and Partition Management System (TAPMS)
+      # K8s operator to work with tenant transit engine and transit engine keys.
+      # The minimum policy requirements at this time are:
+      # sys/mounts/cray-tenant-* capabilities to permit the creation and removal of tenant transit engines.
+      # cray-tenant-* capabilities to permit the creation and removal of tenant transit engine keys.
+      - name: tapms-operator
+        rules: |
+          path "sys/mounts/cray-tenant-*" { capabilities = ["read", "update", "delete"] }
+          path "cray-tenant-*" { capabilities = ["read", "update", "delete"] }
       {{- if .Values.pki.customCA.enabled }}
       # This pki-engine policy is used by cert-manager for 'common' issuers
       # to request leaf certificate signing
@@ -178,6 +187,18 @@ spec:
           # This is required for Kubernetes 1.21+
           disable_iss_validation: true
         roles:
+          # authN role for the TAPMS operator running in the
+          # cray-tapms-operator pod in the tapms-operator namespace.
+          # Since a Vault token is retrieved for each tenant operation, the
+          # token TTL can be very short.
+          - name: tapms-operator
+            bound_service_account_names:
+              - cray-tapms-operator
+            bound_service_account_namespaces:
+              - tapms-operator
+            policies:
+              - tapms-operator
+            ttl: 5m
           {{- if .Values.pki.customCA.enabled }}
           # authN role used by cert-manager for 'common', namespace-bound issuers
           # via pki-common mount
