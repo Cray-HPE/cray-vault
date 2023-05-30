@@ -30,7 +30,7 @@ dep-up:
 test:
 	docker run --rm \
 		-v ${PWD}/charts:/apps \
-		${HELM_UNITTEST_IMAGE} -3 \
+		${HELM_UNITTEST_IMAGE} \
 		cray-vault-operator \
 		cray-vault
 
