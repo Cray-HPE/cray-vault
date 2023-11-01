@@ -60,6 +60,12 @@ spec:
         cpu: 500m
         memory: 768Mi
 
+  # Depending on what the container platform is configured to use, init containers may run under
+  # a different user than the actual vault pod leading to EPERM issues with the files the init
+  # container setup.
+  # Ref: https://github.com/bank-vaults/vault-operator/blob/1a25066ab22cfef78ac0172e1f5af8220e277196/deploy/examples/cr-raft.yaml#L74-L86
+  vaultInitContainers: {{- .Values.vault.vaultInitContainers | toYaml | nindent 4 }}
+
   volumeClaimTemplates:
     - metadata:
         name: vault-raft
