@@ -57,6 +57,21 @@ vault:
   antiaffinity:
     enabled: true
     topologyKey: "kubernetes.io/hostname"
+  # This works around an upstream banzai bank vaults issue if the init container
+  # runs under a different context than the vault pods.
+  #
+  # Comment out if unneeded or causing issues, should be unnecessary generally.
+  vaultInitContainers:
+    - name: vault-config-permissions
+      image: "artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.16"
+      command:
+        - /bin/sh
+        - -c
+        - |
+          chown -R 100:1000 /vault/config
+      volumeMounts:
+        - name: vault-config
+          mountPath: /vault/config
 
 audit:
   enabled: false
