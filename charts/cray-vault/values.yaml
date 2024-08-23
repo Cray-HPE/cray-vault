@@ -34,6 +34,12 @@ kubectl:
     tag: 1.19.15
     pullPolicy: IfNotPresent
 
+# Ingress gateways to allow vault access over
+ingress:
+  gateways:
+    - "services/services-gateway"
+    - "services/customer-admin-gateway"
+
 serviceAccountName: "vault"
 
 allowedAuthNamespaces:

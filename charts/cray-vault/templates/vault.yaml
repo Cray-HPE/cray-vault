@@ -144,6 +144,11 @@ spec:
         rules: path "transit/*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+      # Enable broad access to the sops transist engine
+      - name: allow_sops
+        rules: path "sops/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+          }
       # This policy is used by the Tenant and Partition Management System (TAPMS)
       # K8s operator to work with tenant transit engine and transit engine keys.
       # The minimum policy requirements at this time are:
@@ -271,7 +276,7 @@ spec:
           {{- end }}
           {{- end }}
           {{- range .Values.allowedAuthNamespaces }}
-          # authN role that (by policy) allows broad access to secrets and transit engine
+          # authN role that (by policy) allows broad access to secrets, transit engine, and sops transit engine
           - name: {{ .namespace | quote }}
             bound_service_account_names:
               - {{ .serviceaccount | quote }}
@@ -280,6 +285,7 @@ spec:
             policies:
               - allow_secrets
               - allow_transit
+              - allow_sops
             ttl: {{ .ttl }}
           {{- end }}
       {{- if .Values.jwt.enabled }}
@@ -316,6 +322,9 @@ spec:
       - path: transit
         type: transit
         description: Transit Engine
+      - path: sops
+        type: transit
+        description: Sops Transit Engine
       {{- if .Values.pki.customCA.enabled }}
       # This configures PKI instances within vault
       - path: pki_common
