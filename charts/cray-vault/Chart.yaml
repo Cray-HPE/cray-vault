@@ -23,7 +23,7 @@
 #
 apiVersion: v2
 name: cray-vault
-version: 1.6.2
+version: 1.7.0
 description: Cray Vault for secure secret stores
 keywords:
   - cray-vault
@@ -43,7 +43,7 @@ annotations:
           url: https://github.com/Cray-HPE/cray-vault/pull/2
   artifacthub.io/images: |
     - name: kubectl
-      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.19.15
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.24.17
     - name: ubuntu
       image: artifactory.algol60.net/csm-docker/stable/docker.io/library/ubuntu:focal
     - name: vault
