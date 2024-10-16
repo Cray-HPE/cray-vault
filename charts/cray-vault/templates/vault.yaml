@@ -154,10 +154,14 @@ spec:
       # The minimum policy requirements at this time are:
       # sys/mounts/cray-tenant-* capabilities to permit the creation and removal of tenant transit engines.
       # cray-tenant-* capabilities to permit the creation and removal of tenant transit engine keys.
+      # sys/policy/allow_cray-tenant-* capabilities to permit the creation and removal of authentication policy for tenants.
+      # auth/kubernetes/role/cray-tenant-* capabilities to permit the creation and removal of authentication roles for tenants.
       - name: tapms-operator
         rules: |
           path "sys/mounts/cray-tenant-*" { capabilities = ["read", "update", "delete"] }
           path "cray-tenant-*" { capabilities = ["read", "update", "delete"] }
+          path "auth/kubernetes/role/cray-tenant-*" { capabilities = ["create", "read", "update", "delete"] }
+          path "sys/policy/allow_cray-tenant-*" { capabilities = ["read", "update", "delete"] }
       {{- if .Values.pki.customCA.enabled }}
       # This pki-engine policy is used by cert-manager for 'common' issuers
       # to request leaf certificate signing
