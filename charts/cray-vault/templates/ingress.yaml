@@ -25,20 +25,18 @@ OTHER DEALINGS IN THE SOFTWARE.
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: "cray-vault"
+  name: "{{ include "cray-vault.name" . }}"
 spec:
   hosts:
-    - "*"
+    - {{ .Values.ingress.host | quote }}
   {{- with .Values.ingress.gateways }}
   gateways:
     {{- toYaml . | nindent 4 }}
   {{- end }}
   http:
     - match:
-      - uri:
-          prefix: /apis/vault
-      rewrite:
-        uri: ' '
+      - authority:
+          exact: {{ .Values.ingress.host | quote }}
       route:
       - destination:
           host: cray-vault

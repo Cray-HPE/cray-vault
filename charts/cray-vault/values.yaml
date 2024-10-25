@@ -39,6 +39,7 @@ ingress:
   gateways:
     - "services/services-gateway"
     - "services/customer-admin-gateway"
+  host: vault.local
 
 serviceAccountName: "vault"
 
