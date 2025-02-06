@@ -1,4 +1,4 @@
-# Copyright 2021 Hewlett Packard Enterprise Development LP
+# Copyright 2021-2025 Hewlett Packard Enterprise Development LP
 
 CHART_METADATA_IMAGE ?= artifactory.algol60.net/csm-docker/stable/chart-metadata
 YQ_IMAGE ?= artifactory.algol60.net/docker.io/mikefarah/yq:4
@@ -16,6 +16,7 @@ helm:
 		-e HELM_CACHE_HOME=/src/.helm/cache \
 		-e HELM_CONFIG_HOME=/src/.helm/config \
 		-e HELM_DATA_HOME=/src/.helm/data \
+		-e HELM_EXPERIMENTAL_OCI=1 \
 		$(HELM_IMAGE) \
 		$(CMD)
 
