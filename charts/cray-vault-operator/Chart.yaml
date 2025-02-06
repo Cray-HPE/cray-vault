@@ -8,7 +8,7 @@ home: "cloud/cray-charts"
 dependencies:
   - name: vault-operator
     version: 1.22.5
-    repository: oci://ghcr.io/bank-vaults/helm-charts/vault-operator
+    repository: oci://ghcr.io/bank-vaults/helm-charts
 maintainers:
   - name: kburns-hpe
 appVersion: 1.22.5  # Tracks the upstream version of vault-operator
