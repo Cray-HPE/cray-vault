@@ -1,2 +1,2 @@
 chart-repos:
-  - banzaicloud=oci://ghcr.io/bank-vaults/helm-charts
+  - banzaicloud=https://kubernetes-charts.banzaicloud.com
