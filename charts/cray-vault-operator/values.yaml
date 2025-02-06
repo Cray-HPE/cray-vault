@@ -10,8 +10,8 @@ kubectl:
 
 vault-operator:
   image:
-    bankVaultsRepository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults
-    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator
+    bankVaultsRepository: artifactory.algol60.net/csm-docker/stable/ghcr.io/bank-vaults
+    repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/bank-vaults/vault-operator
     tag: 1.22.5
 
   watchNamespace: "vault"
