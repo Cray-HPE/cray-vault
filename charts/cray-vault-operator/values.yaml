@@ -12,7 +12,7 @@ vault-operator:
   image:
     bankVaultsRepository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/bank-vaults
     repository: artifactory.algol60.net/csm-docker/stable/ghcr.io/banzaicloud/vault-operator
-    tag: 1.16.0
+    tag: 1.22.5
 
   watchNamespace: "vault"
 

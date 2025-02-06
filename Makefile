@@ -16,6 +16,7 @@ helm:
 		-e HELM_CACHE_HOME=/src/.helm/cache \
 		-e HELM_CONFIG_HOME=/src/.helm/config \
 		-e HELM_DATA_HOME=/src/.helm/data \
+		-e HELM_EXPERIMENTAL_OCI=1 \
 		$(HELM_IMAGE) \
 		$(CMD)
 
