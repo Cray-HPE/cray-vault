@@ -27,6 +27,22 @@ lint:
 dep-up:
 	CMD="dep up charts/cray-vault-operator" $(MAKE) helm
 	CMD="dep up charts/cray-vault"          $(MAKE) helm
+	$(MAKE) copy-crds
+
+copy-crds:
+	@echo "Copying CRDs from dependency chart to crds directory..."
+	@mkdir -p charts/cray-vault-operator/crds
+	@cd charts/cray-vault-operator/charts && \
+	if [ -f vault-operator-*.tgz ]; then \
+		echo "Extracting dependency chart CRDs..."; \
+		if tar -xzf vault-operator-*.tgz -C ../crds --strip-components 2 vault-operator/crds/crd.yaml; then \
+			echo "CRDs copied successfully"; \
+		else \
+			echo "Warning: Failed to extract CRDs from dependency chart"; \
+		fi; \
+	else \
+		echo "Warning: Dependency chart vault-operator-*.tgz file not found"; \
+	fi
 
 test:
 	docker run --rm \
