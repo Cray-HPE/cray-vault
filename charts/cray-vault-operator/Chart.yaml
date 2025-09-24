@@ -1,6 +1,6 @@
 apiVersion: v2
 name: cray-vault-operator
-version: 1.5.1
+version: 1.5.2
 description: Cray Vault Operator for secure secret stores
 keywords:
   - cray-vault-operator
@@ -23,7 +23,7 @@ annotations:
           url: https://github.com/Cray-HPE/cray-vault/pull/2
   artifacthub.io/images: |
     - name: kubectl
-      image: artifactory.algol60.net/csm-docker/stable/docker.io/bitnami/kubectl:1.33.1
+      image: artifactory.algol60.net/csm-docker/stable/docker-kubectl:1.32.2
     - name: vault-operator
       image: artifactory.algol60.net/csm-docker/stable/ghcr.io/bank-vaults/vault-operator:v1.22.5
     - name: bank-vaults

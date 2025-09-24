@@ -4,8 +4,8 @@
 
 kubectl:
   image:
-    repository: artifactory.algol60.net/csm-docker/stable/docker.io/bitnami/kubectl
-    tag: 1.33.1
+    repository: artifactory.algol60.net/csm-docker/stable/docker-kubectl
+    tag: 1.32.2
     pullPolicy: IfNotPresent
 
 vault-operator:
